@@ -1,3 +1,5 @@
+using Lekeplass_kart_Bergen.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -19,9 +21,16 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+HttpGetFile httpGetFile = new();
+Lekeplass lekeplass = new();
+var lekeplassList = lekeplass.StreamReader(await httpGetFile.Run());
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+foreach (Lekeplass lekeplasser in lekeplassList)
+{
+    Console.WriteLine(
+        $"#{lekeplasser.Id}, {lekeplasser.Name}: {lekeplasser.Lat}, {lekeplasser.Long}"
+    );
+}
+app.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();

@@ -1,3 +1,5 @@
+namespace Lekeplass_kart_Bergen.Models;
+
 class HttpGetFile
 {
     static readonly HttpClient client = new HttpClient();
