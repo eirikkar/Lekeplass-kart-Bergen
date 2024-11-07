@@ -4,7 +4,7 @@ class HttpGetFile
 {
     static readonly HttpClient client = new HttpClient();
 
-    public async Task<Stream> Run()
+    public async Task GetCsv()
     {
         try
         {
@@ -12,7 +12,8 @@ class HttpGetFile
                 "https://raw.githubusercontent.com/datahotellet/dataset-archive/refs/heads/main/datasets/bergen/lekeplasser/dataset.csv"
             );
             response.EnsureSuccessStatusCode();
-            return await response.Content.ReadAsStreamAsync();
+            var toFile = await response.Content.ReadAsStringAsync();
+            File.WriteAllText("data/lekeplasser.csv", toFile);
         }
         catch (HttpRequestException e)
         {

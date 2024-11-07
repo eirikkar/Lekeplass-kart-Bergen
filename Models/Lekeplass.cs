@@ -19,13 +19,11 @@ class Lekeplass
     [Name("latitude")]
     public decimal Lat { get; set; }
 
-    public List<Lekeplass> StreamReader(Stream stream)
+    public List<Lekeplass> GetLekeplasser()
     {
-        using var reader = new StreamReader(stream);
+        using var reader = new StreamReader("data/lekeplasser.csv");
         var config = new CsvConfiguration(CultureInfo.InvariantCulture) { Delimiter = ";" };
         using var csv = new CsvReader(reader, config);
-
-        var records = csv.GetRecords<Lekeplass>().ToList();
-        return records;
+        return csv.GetRecords<Lekeplass>().ToList();
     }
 }

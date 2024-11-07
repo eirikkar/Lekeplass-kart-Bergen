@@ -23,7 +23,9 @@ app.UseRouting();
 app.UseAuthorization();
 HttpGetFile httpGetFile = new();
 Lekeplass lekeplass = new();
-var lekeplassList = lekeplass.StreamReader(await httpGetFile.Run());
+await httpGetFile.GetCsv();
+
+var lekeplassList = lekeplass.GetLekeplasser();
 
 foreach (Lekeplass lekeplasser in lekeplassList)
 {
