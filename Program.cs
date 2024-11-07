@@ -1,5 +1,4 @@
 using Lekeplass_kart_Bergen.Controllers;
-using Lekeplass_kart_Bergen.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 

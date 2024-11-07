@@ -4,7 +4,7 @@ class HttpGetFile
 {
     static readonly HttpClient client = new HttpClient();
 
-    public async Task GetCsv()
+    public static async Task GetCsv()
     {
         try
         {
