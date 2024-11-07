@@ -1,9 +1,11 @@
 using Lekeplass_kart_Bergen.Controllers;
+using Lekeplass_kart_Bergen.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<ILekeplassService, LekeplassService>();
 
 var app = builder.Build();
 
@@ -20,11 +22,6 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseAuthorization();
-
-LekeplassController lekeplass = new LekeplassController();
-
 app.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}/{id?}");
-app.MapGet("/lekeplasser", () => lekeplass.GetAllBlogs());
 
 app.Run();

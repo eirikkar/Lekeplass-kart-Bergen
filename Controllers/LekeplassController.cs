@@ -1,22 +1,30 @@
-using System.Diagnostics;
+using System.Collections.Generic;
 using Lekeplass_kart_Bergen.Models;
+using Lekeplass_kart_Bergen.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Lekeplass_kart_Bergen.Controllers;
-
-public class LekeplassController : Controller
+namespace Lekeplass_kart_Bergen.Controllers
 {
-    private readonly Lekeplass _lekeplass;
-    private readonly HttpGetFile _httpGetFile;
-
-    public LekeplassController()
+    [ApiController]
+    [Route("api/lekeplasser")]
+    public class LekeplassController : ControllerBase
     {
-        _lekeplass = new Lekeplass();
-        _httpGetFile = new HttpGetFile();
-    }
+        private readonly ILekeplassService _lekeplassService;
 
-    public Lekeplass[] GetAllBlogs()
-    {
-        return _lekeplass.GetLekeplasser().ToArray();
+        public LekeplassController(ILekeplassService lekeplassService)
+        {
+            _lekeplassService = lekeplassService;
+        }
+
+        [HttpGet]
+        public ActionResult<IEnumerable<Lekeplass>> GetAllLekeplasser()
+        {
+            var lekeplasser = _lekeplassService.GetLekeplasser();
+            if (lekeplasser == null || !lekeplasser.Any())
+            {
+                return NotFound("No playgrounds found.");
+            }
+            return Ok(lekeplasser);
+        }
     }
 }

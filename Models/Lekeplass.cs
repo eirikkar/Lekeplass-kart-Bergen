@@ -1,8 +1,5 @@
 namespace Lekeplass_kart_Bergen.Models;
 
-using System.Globalization;
-using CsvHelper;
-using CsvHelper.Configuration;
 using CsvHelper.Configuration.Attributes;
 
 public class Lekeplass
@@ -18,12 +15,4 @@ public class Lekeplass
 
     [Name("latitude")]
     public decimal Lat { get; set; }
-
-    public List<Lekeplass> GetLekeplasser()
-    {
-        using var reader = new StreamReader("data/lekeplasser.csv");
-        var config = new CsvConfiguration(CultureInfo.InvariantCulture) { Delimiter = ";" };
-        using var csv = new CsvReader(reader, config);
-        return csv.GetRecords<Lekeplass>().ToList();
-    }
 }

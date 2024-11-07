@@ -14,7 +14,7 @@ async function initMap() {
     mapId: "4504f8b37365c3d0",
   });
 
-  fetch("/lekeplasser")
+  fetch("/api/lekeplasser")
     .then((response) => response.json())
     .then((lekeplasser) => {
       const infoWindow = new InfoWindow();
