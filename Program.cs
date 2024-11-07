@@ -1,3 +1,4 @@
+using Lekeplass_kart_Bergen.Controllers;
 using Lekeplass_kart_Bergen.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,11 +22,9 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
-HttpGetFile httpGetFile = new();
-Lekeplass lekeplass = new();
-await httpGetFile.GetCsv();
 
-var lekeplassList = lekeplass.GetLekeplasser();
+LekeplassController lekeplass = new LekeplassController();
+var lekeplassList = lekeplass.GetAllBlogs();
 
 foreach (Lekeplass lekeplasser in lekeplassList)
 {
@@ -34,5 +33,6 @@ foreach (Lekeplass lekeplasser in lekeplassList)
     );
 }
 app.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}/{id?}");
+app.MapGet("/lekeplasser", () => lekeplassList);
 
 app.Run();

@@ -14,4 +14,9 @@ public class LekeplassController : Controller
         _lekeplass = new Lekeplass();
         _httpGetFile = new HttpGetFile();
     }
+
+    public Lekeplass[] GetAllBlogs()
+    {
+        return _lekeplass.GetLekeplasser().ToArray();
+    }
 }

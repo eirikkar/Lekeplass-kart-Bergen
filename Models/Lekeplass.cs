@@ -5,7 +5,7 @@ using CsvHelper;
 using CsvHelper.Configuration;
 using CsvHelper.Configuration.Attributes;
 
-class Lekeplass
+public class Lekeplass
 {
     [Name("id")]
     public int Id { get; set; }
