@@ -37,7 +37,7 @@ async function initMap() {
         });
         marker.addListener("click", () => {
           infoWindow.setContent(`
-            <div>
+            <div id="infobox">
               <h3>${name}</h3>
             </div>
           `);
