@@ -24,15 +24,8 @@ app.UseRouting();
 app.UseAuthorization();
 
 LekeplassController lekeplass = new LekeplassController();
-var lekeplassList = lekeplass.GetAllBlogs();
 
-foreach (Lekeplass lekeplasser in lekeplassList)
-{
-    Console.WriteLine(
-        $"#{lekeplasser.Id}, {lekeplasser.Name}: {lekeplasser.Lat}, {lekeplasser.Long}"
-    );
-}
 app.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}/{id?}");
-app.MapGet("/lekeplasser", () => lekeplassList);
+app.MapGet("/lekeplasser", () => lekeplass.GetAllBlogs());
 
 app.Run();
