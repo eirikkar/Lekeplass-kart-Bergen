@@ -6,6 +6,8 @@ A web application to display playgrounds (lekeplasser) in Bergen using Google Ma
 
 ## Dataset
 
+Data was found on data.norge.no, the link to the datanorge page can be found [here](https://data.norge.no/datasets/c6f8592c-154f-4b22-ba3e-64fdb2a22fe2)
+
 [Dataset taken from](https://github.com/datahotellet/dataset-archive/blob/main/datasets/bergen/lekeplasser/dataset.csv)
 
 ## Setup Guide
