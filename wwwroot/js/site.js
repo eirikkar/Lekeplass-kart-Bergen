@@ -14,7 +14,7 @@ async function initMap() {
   const map = new Map(document.getElementById("map"), {
     zoom: 11,
     center: { lat: 60.336617, lng: 5.30129 },
-    mapId: "4504f8b37365c3d0",
+    mapId: "f6c0820cd736c60",
   });
 
   fetch("/api/lekeplasser")
@@ -30,6 +30,9 @@ async function initMap() {
         const pin = new PinElement({
           glyph: `${i + 1}`,
           scale: 1,
+          background: "#fb6304",
+          borderColor: "#137333",
+          glyphColor: "white",
         });
         const marker = new AdvancedMarkerElement({
           position,
