@@ -9,21 +9,21 @@ namespace Lekeplass_kart_Bergen.Controllers;
 public class LekeplassController : ControllerBase
 {
     private readonly ILekeplassService _lekeplassService;
-    private readonly IFileFetcher _fileFetcher;
+    private readonly IFileFetcherService _fileFetcher;
 
-    public LekeplassController(ILekeplassService lekeplassService, IFileFetcher fileFetcher)
+    public LekeplassController(ILekeplassService lekeplassService, IFileFetcherService fileFetcher)
     {
         _lekeplassService = lekeplassService;
         _fileFetcher = fileFetcher;
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Lekeplass>>> GetAllLekeplasser()
+    public async Task<ActionResult<List<Lekeplass>>> GetAllLekeplasser()
     {
         var lekeplasser = _lekeplassService.GetLekeplasser(await _fileFetcher.GetCsvAsync());
         if (lekeplasser == null || !lekeplasser.Any())
         {
-            return NotFound("No playgrounds found.");
+            return NotFound();
         }
         return Ok(lekeplasser);
     }

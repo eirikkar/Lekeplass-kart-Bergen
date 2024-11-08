@@ -7,7 +7,7 @@ namespace Lekeplass_kart_Bergen.Services;
 
 public class LekeplassService : ILekeplassService
 {
-    public IEnumerable<Lekeplass> GetLekeplasser(Stream stream)
+    public List<Lekeplass> GetLekeplasser(Stream stream)
     {
         using var reader = new StreamReader(stream);
         var config = new CsvConfiguration(CultureInfo.InvariantCulture) { Delimiter = ";" };

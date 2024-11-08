@@ -1,6 +1,6 @@
 namespace Lekeplass_kart_Bergen.Services;
 
-public class FileFetcherService : IFileFetcher
+public class FileFetcherService : IFileFetcherService
 {
     private readonly HttpClient _httpClient;
 

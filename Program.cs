@@ -3,7 +3,7 @@ using Lekeplass_kart_Bergen.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
-builder.Services.AddHttpClient<IFileFetcher, FileFetcherService>();
+builder.Services.AddHttpClient<IFileFetcherService, FileFetcherService>();
 builder.Services.AddScoped<ILekeplassService, LekeplassService>();
 
 var app = builder.Build();
