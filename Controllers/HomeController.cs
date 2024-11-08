@@ -6,6 +6,7 @@ public class HomeController : Controller
 {
     public IActionResult Index()
     {
+        // This is the default view
         return View();
     }
 }

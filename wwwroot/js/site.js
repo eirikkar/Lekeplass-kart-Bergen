@@ -3,6 +3,9 @@
  * Copyright 2019 Google LLC. All Rights Reserved.
  * SPDX-License-Identifier: Apache-2.0
  */
+
+// This code is based on the example code from goolgle maps
+// Creates the map and fetches data from api/lekeplasser
 async function initMap() {
   const { Map, InfoWindow } = await google.maps.importLibrary("maps");
   const { AdvancedMarkerElement, PinElement } = await google.maps.importLibrary(

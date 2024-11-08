@@ -18,6 +18,7 @@ public class LekeplassController : ControllerBase
     }
 
     [HttpGet]
+    // GET api for getting all lekeplasser
     public async Task<ActionResult<List<Lekeplass>>> GetAllLekeplasser()
     {
         var lekeplasser = _lekeplassService.GetLekeplasser(await _fileFetcher.GetCsvAsync());

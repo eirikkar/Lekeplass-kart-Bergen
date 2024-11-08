@@ -2,6 +2,7 @@ namespace Lekeplass_kart_Bergen.Models;
 
 using CsvHelper.Configuration.Attributes;
 
+// Lekeplass model
 public class Lekeplass
 {
     [Name("id")]
