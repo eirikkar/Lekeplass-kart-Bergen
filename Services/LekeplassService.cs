@@ -3,18 +3,15 @@ using CsvHelper;
 using CsvHelper.Configuration;
 using Lekeplass_kart_Bergen.Models;
 
-namespace Lekeplass_kart_Bergen.Services
-{
-    public class LekeplassService : ILekeplassService
-    {
-        private readonly string filepath = "data/lekeplasser.csv";
+namespace Lekeplass_kart_Bergen.Services;
 
-        public IEnumerable<Lekeplass> GetLekeplasser()
-        {
-            using var reader = new StreamReader(filepath);
-            var config = new CsvConfiguration(CultureInfo.InvariantCulture) { Delimiter = ";" };
-            using var csv = new CsvReader(reader, config);
-            return csv.GetRecords<Lekeplass>().ToList();
-        }
+public class LekeplassService : ILekeplassService
+{
+    public IEnumerable<Lekeplass> GetLekeplasser(Stream stream)
+    {
+        using var reader = new StreamReader(stream);
+        var config = new CsvConfiguration(CultureInfo.InvariantCulture) { Delimiter = ";" };
+        using var csv = new CsvReader(reader, config);
+        return csv.GetRecords<Lekeplass>().ToList();
     }
 }
